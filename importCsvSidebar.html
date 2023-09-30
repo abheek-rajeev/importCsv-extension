@@ -2,8 +2,47 @@
 <html>
   <head>
     <base target="_top">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
   <body>
-    <h1>sidebar</h1>
+    <!-- <h1>sidebar</h1> -->
+    <div class="tabs is-fullwidth is-boxed">
+      <ul>
+        <li class="tablinks">
+          <a onclick="openTab(event,'Auto')">
+            <span>Auto</span>
+          </a>
+        </li>
+        <li class="tablinks">
+          <a onclick="openTab(event,'Custom')">
+            <span>Custom</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="content" id="Auto" style="display:none;">
+        <label for="csvFileSideAuto">Select a file:</label>
+        <input type="file" id="csvFileSideAuto" name="csvFileSideAuto" accept=".csv">
+      </div>
+      <div class="content" id="Custom" style="display:none;">
+        <label for="csvFileSideCustom">Select a file:</label>
+        <input type="file" id="csvFileSideCustom" name="csvFileSideCustom" accept=".csv">
+      </div>
+    </div>
+    <script>
+      function openTab(event,inputmode){
+        event.preventDefault();
+        let targetAuto = document.getElementById('Auto');
+        let targetCustom = document.getElementById('Custom');
+        targetAuto.style.display = 'none';
+        targetCustom.style.display = 'none';
+        if (inputmode === 'Auto') {
+          targetAuto.style.display = 'block';
+        } else if (inputmode === 'Custom') {
+          targetCustom.style.display = 'block';
+        }
+      }
+    </script>
   </body>
 </html>
